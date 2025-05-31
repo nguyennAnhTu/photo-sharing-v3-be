@@ -25,7 +25,7 @@ app.use(
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: ["https://qtqcng-3000.csb.app", "https://c6cd52-3000.csb.app"],
+    origin: ["https://c6cd52-3000.csb.app"],
     credentials: true,
   })
 );
