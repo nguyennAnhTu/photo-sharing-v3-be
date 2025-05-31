@@ -1,32 +1,34 @@
 const express = require("express");
 const app = express();
 const dbConnect = require("./db/dbConnect");
-const cors = require("cors")
+const cors = require("cors");
 const UserRouter = require("./routes/UserRouter");
 const PhotoRouter = require("./routes/PhotoRouter");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
-const session = require('express-session'); 
-const cookieParser = require("cookie-parser");         
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 
 dbConnect();
-app.use(cookieParser('keyboard cat'));
+app.use(cookieParser("keyboard cat"));
 app.use(
   session({
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
-    cookie: { 
+    cookie: {
       maxAge: 60 * 30, // In secs, Optional
     },
   })
 );
 
 app.use(bodyParser.json());
-app.use(cors({
-  origin: true,
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "https://qtqcng-3000.csb.app",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use("/api/user", UserRouter);
 app.use("/api/photo", PhotoRouter);

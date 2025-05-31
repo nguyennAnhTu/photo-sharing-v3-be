@@ -18,7 +18,11 @@ router.post("/login", async(req, res) => {
                 return res.status(400).send();
             }
             const userObj = JSON.parse(JSON.stringify(user));
-            res.cookie("user_id", userObj._id);
+            res.cookie("user_id", userObj._id, {
+                httpOnly: true,
+                secure: true,
+                sameSite: "none"
+            });
             res.status(200).json({
                 _id: userObj._id,
                 first_name: userObj.first_name,
