@@ -37,6 +37,6 @@ app.get("/", (request, response) => {
   response.send({ message: "Hello from photo-sharing app API!" });
 });
 
-app.listen(8080, () => {
-  console.log("server listening on port 8080");
+app.listen(8081, () => {
+  console.log("server listening on port 8081");
 });
